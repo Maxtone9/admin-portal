@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="space"></div>
+</body>
+<script>
+
+var xhr = new XMLHttpRequest();
+
+var apiUrl = 'http://127.0.0.1:60000/list';
+
+var dataToSend = {
+type:'customer'
+};
+
+var jsonData = JSON.stringify(dataToSend);
+
+xhr.open('POST', apiUrl, true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+
+xhr.onload = function () {
+if (xhr.status >= 200 && xhr.status < 300) {
+    var data = (xhr.responseText);
+    const space = document.getElementById('space')
+    space.innerHTML = data
+} else {
+    console.error('Request failed with status:', xhr.status);
+}
+};
+
+xhr.onerror = function () {
+console.error('Request failed');
+};
+xhr.send(jsonData);
+
+  </script>
+</html>

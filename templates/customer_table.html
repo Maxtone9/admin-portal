@@ -1,0 +1,26 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for customer in customers %}
+        <tr>
+            <td>{{ customer.id }}</td>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.phone }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.address }}</td>
+            <td>
+                <a href="{{ url_for('edit_customer', customer_id=customer.id) }}">Edit</a> <!-- Edit link -->
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
